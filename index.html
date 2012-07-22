@@ -63,7 +63,7 @@
         $item.appendTo("#repos");
       }
 
-      $.getJSON("https://api.github.com/daamien/repos?callback=?", function (result) {
+      $.getJSON("https://api.github.com/users/daamien/repos?callback=?", function (result) {
         var repos = result.data;
 
         $(function () {
@@ -109,7 +109,7 @@
         });
       });
 
-      $.getJSON("https://api.github.com/daamien/members?callback=?", function (result) {
+      $.getJSON("https://api.github.com/users/daamien/members?callback=?", function (result) {
         var members = result.data;
 
         $(function () {
