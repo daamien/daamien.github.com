@@ -32,6 +32,16 @@
         return repoDescriptions[repo.name] || repo.description;
       }
 
+
+      // Put custom repo language in this object, keyed by repo name
+      var repoLangs = {
+         "pgdocs_fr" : "XML"      
+      }
+
+      function repoLang(repo) {
+      	return repoLangs[repo.name] || repo.language;
+      }
+
       function addRecentlyUpdatedRepo(repo) {
         var $item = $("<li>");
 
@@ -55,10 +65,10 @@
       }
 
       function addRepo(repo) {
-        var $item = $("<li>").addClass("repo grid-1 " + (repo.language || '').toLowerCase());
+        var $item = $("<li>").addClass("repo grid-1 " + (repoLang(repo) || '').toLowerCase());
         var $link = $("<a>").attr("href", repoUrl(repo)).appendTo($item);
         $link.append($("<h2>").text(repo.name));
-        $link.append($("<h3>").text(repo.language));
+        $link.append($("<h3>").text(repoLang(repo)));
         $link.append($("<p>").text(repoDescription(repo)));
         $item.appendTo("#repos");
       }
